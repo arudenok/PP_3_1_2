@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Таблица пользователей</title>
+</head>
+<style>
+    table {
+        width: 20%; /* Ширина таблицы */
+        background: #ffffff; /* Цвет фона таблицы */
+        color: white; /* Цвет текста */
+        border-spacing: 1px; /* Расстояние между ячейками */
+    }
+    td, th {
+        background: #000000; /* Цвет фона ячеек */
+        padding: 5px; /* Поля вокруг текста */
+    }
+</style>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>Роль</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getId()}">id</td>
+        <td th:text="${user.getUsername()}">name</td>
+        <td th:text="${user.getLastName()}">lastName</td>
+        <td th:text="${user.getAge()}">age</td>
+        <td th:text="${user.getRole()}">role</td>
+        <td><a th:href="@{/admin/{id}(id=${user.id})}">
+            <button type="submit">Удалить</button></a></td>
+        <td><a
+        th:href="@{/admin/showAll/{id}/edit(id=${user.id})}">
+            <button type="submit">Изменить</button></a></td>
+        <td>
+            <form  th:align="center" th:action="@{/admin/showAll/{id}/info(id=${user.getId()})}">
+                <button type="submit">Инфо</button>
+            </form>
+        </td>
+    </tr>
+
+</table>
+<div>
+    <br>
+    <form action="/admin/newUser" >
+        <button>Добавить пользователя</button>
+    </form>
+    <br>
+    <form action="/logout" >
+        <button>ВЫйти</button>
+    </form>
+    </form>
+    </td>
+    <td>
+
+</div>
+
+</body>
+</html>

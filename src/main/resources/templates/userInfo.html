@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+</head>
+<style>
+    table {
+        width: 20%; /* Ширина таблицы */
+        background: #ffffff; /* Цвет фона таблицы */
+        color: white; /* Цвет текста */
+        border-spacing: 1px; /* Расстояние между ячейками */
+    }
+
+    td, th {
+        background: #000000; /* Цвет фона ячеек */
+        padding: 5px; /* Поля вокруг текста */
+    }
+</style>
+<body>
+<div>
+    <table>
+        <tr>
+            <!--            <th>ID</th>-->
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Возраст</th>
+        </tr>
+        <tr>
+            <!--                        <td th:text="${user.getId()}">value</td>-->
+            <td th:text="${user.getUsername()}">value</td>
+            <td th:text="${user.getLastName()}">value</td>
+            <td th:text="${user.getAge()}">value</td>
+        </tr>
+    </table>
+</div>
+<br/>
+<hr/>
+<br>
+
+<form th:action="@{/}">
+
+    <button type="submit">Назад</button>
+</form>
+<br>
+<form action="/logout" >
+    <button>ВЫйти</button>
+</form>
+
+
+</body>
+</html>
